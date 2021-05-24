@@ -31,7 +31,7 @@ public class LinkMakerService {
 
     public void makeLinks(User user){
 
-        if(user.getSpecialOfferList().size() < offerService.getAll().size()) {
+        if(specialOfferService.allByUserId(user.getUser_id()).size() < offerService.getAll().size()) {
 
             allOffers = new ArrayList<>(offerService.getAll());
 
