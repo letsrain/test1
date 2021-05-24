@@ -199,7 +199,8 @@ public enum BotState {
 
         @Override
         public void enter(BotContext botContext) {
-            botContext.getKeyboardService().sendSettingsMenuKeyboard(botContext.getMessageCallback().getSender().getId());
+                       botContext.getKeyboardService().sendYesNoKeyboard(botContext.getMessageCallback().getSender().getId());
+
         }
 
         @Override
