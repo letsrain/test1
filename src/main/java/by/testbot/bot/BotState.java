@@ -16,23 +16,9 @@ public enum BotState {
             String text = botContext.getMessageCallback().getMessage().getText();
 
             switch(text) {
-                case "Отложенное сообщение": 
-                    botState = PostponeMessage;
-                    break;
-                case "Список менеджеров":
-                    botState = Managers;
-                    break;
-                case "Список клиентов": 
-                    botState = Clients;
-                    break;
-                case "Отчет":
-                    botState = Report;
-                    break;
-                case "Интеграции":
-                    botState = Integrations;
-                    break;
-                case "Настройка":
-                    botState = Settings;
+
+                case "Подобрать предложение":
+                    botState = Settings; //TODO MY
                     break;
                 default:
                     botState = MainMenu;
@@ -221,11 +207,11 @@ public enum BotState {
             String text = botContext.getMessageCallback().getMessage().getText();
 
             switch (text) {
-                case "Редактировать текст, отправляемый ботом": 
-                    botState = ListOfMessagesWhichBotSend;
+                case "Уже брал":
+                    botState = AlredyTaken;
                     break;
-                case "Настройка периода временного использования бота":
-                    botState = SetBotUsingPeriod;
+                case "Перейти":
+                    botState = GoToLink;
                     break;
                 case "Назад":
                     botState = MainMenu;
@@ -419,7 +405,7 @@ public enum BotState {
 
     //region Settings
     
-    ListOfMessagesWhichBotSend(false) {
+    AlredyTaken(false) {
         @Override
         public void enter(BotContext botContext) {
 
@@ -431,7 +417,7 @@ public enum BotState {
         }
     }, 
     
-    SetBotUsingPeriod(true) {
+    GoToLink(true) {
         BotState botState;
 
         @Override
@@ -454,7 +440,7 @@ public enum BotState {
                     botState = Settings;
                     break;
                 default: 
-                    botState = SetBotUsingPeriod;
+                    botState = GoToLink;
                     break;
             }
         }
@@ -482,7 +468,7 @@ public enum BotState {
 
         @Override
         public BotState nextState() {
-            return SetBotUsingPeriod;
+            return GoToLink;
         }
     },
 
@@ -499,7 +485,7 @@ public enum BotState {
 
         @Override
         public BotState nextState() {
-            return SetBotUsingPeriod;
+            return GoToLink;
         }
     };
 

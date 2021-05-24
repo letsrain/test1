@@ -37,7 +37,7 @@ public class KeyboardService {
 
         sender.setName(botName);
 
-        sendTextMessageRequest.setText("Меню");
+        sendTextMessageRequest.setText("Подбераем...");
         sendTextMessageRequest.setKeyboard(KeyboardSource.firstKeyboard());
         sendTextMessageRequest.setUserId(viberId);
         sendTextMessageRequest.setSender(sender);
@@ -51,7 +51,7 @@ public class KeyboardService {
 
         sender.setName(botName);
 
-        sendTextMessageRequest.setText("Подобрать предложение");
+        sendTextMessageRequest.setText("Подбераем....");
         sendTextMessageRequest.setKeyboard(KeyboardSource.yesOrNoKeyboard());
         sendTextMessageRequest.setUserId(viberId);
         sendTextMessageRequest.setSender(sender);
