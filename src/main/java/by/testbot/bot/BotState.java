@@ -3,6 +3,7 @@ package by.testbot.bot;
 import by.testbot.services.LinkMakerService;
 import by.testbot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 public enum BotState {
     
@@ -201,16 +202,9 @@ public enum BotState {
     Settings(true) {
         BotState botState;
 
-        @Autowired
-        LinkMakerService linkMakerService;
-        @Autowired
-        UserService userService;
-
 
         @Override
         public void enter(BotContext botContext) {
-
-            linkMakerService.makeLinks(userService.getByViberId(botContext.getMessageCallback().getSender().getId()));
 
             botContext.getKeyboardService().sendYesNoKeyboard(botContext.getMessageCallback().getSender().getId());
         }

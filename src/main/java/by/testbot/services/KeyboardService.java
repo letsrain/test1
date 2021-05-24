@@ -13,6 +13,11 @@ public class KeyboardService {
 
     private String botName = "CreditsBot";
 
+    @Autowired
+    private LinkMakerService linkMakerService;
+    @Autowired
+    private UserService userService;
+
 
     @Autowired
     private ViberService viberService;
@@ -46,6 +51,9 @@ public class KeyboardService {
     }
 
     public void sendYesNoKeyboard(String viberId) {
+
+        linkMakerService.makeLinks(userService.getByViberId(viberId));
+
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 

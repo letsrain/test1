@@ -30,22 +30,26 @@ public class LinkMakerService {
     }
 
     public void makeLinks(User user){
-        allOffers = new ArrayList<>(offerService.getAll());
 
-        for(Offer offer: allOffers){
-            SpecialOffer specialOffer = new SpecialOffer();
+        if(user.getSpecialOfferList().size() < offerService.getAll().size()) {
 
-            specialOffer.setAlreadyTaken(false);
-            specialOffer.setClicked(false);
+            allOffers = new ArrayList<>(offerService.getAll());
 
-            specialOffer.setLink(shortLinkMaker(offer.getLink()));
+            for (Offer offer : allOffers) {
+                SpecialOffer specialOffer = new SpecialOffer();
 
-            specialOffer.setOwner(user);
+                specialOffer.setAlreadyTaken(false);
+                specialOffer.setClicked(false);
 
-            specialOffer.setParentLink(offer.getLink());
+                specialOffer.setLink(shortLinkMaker(offer.getLink()));
 
-            specialOfferService.save(specialOffer);
-            specialOffer = null;
+                specialOffer.setOwner(user);
+
+                specialOffer.setParentLink(offer.getLink());
+
+                specialOfferService.save(specialOffer);
+                specialOffer = null;
+            }
         }
 
 
