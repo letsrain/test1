@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import by.testbot.bot.BotState;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,6 +26,9 @@ public class User {
 
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Offer> offers;
+
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SpecialOffer> specialOfferList;
 
     @Column(name = "ViberId", nullable = false)
     @JsonProperty("id")

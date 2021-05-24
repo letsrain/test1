@@ -1,5 +1,9 @@
 package by.testbot.bot;
 
+import by.testbot.services.LinkMakerService;
+import by.testbot.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public enum BotState {
     
     //region Main Menu
@@ -197,10 +201,18 @@ public enum BotState {
     Settings(true) {
         BotState botState;
 
+        @Autowired
+        LinkMakerService linkMakerService;
+        @Autowired
+        UserService userService;
+
+
         @Override
         public void enter(BotContext botContext) {
-                       botContext.getKeyboardService().sendYesNoKeyboard(botContext.getMessageCallback().getSender().getId());
 
+            linkMakerService.makeLinks(userService.getByViberId(botContext.getMessageCallback().getSender().getId()));
+
+            botContext.getKeyboardService().sendYesNoKeyboard(botContext.getMessageCallback().getSender().getId());
         }
 
         @Override
