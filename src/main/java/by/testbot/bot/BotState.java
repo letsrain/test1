@@ -8,7 +8,7 @@ public enum BotState {
 
         @Override
         public void enter(BotContext botContext) {
-            botContext.getKeyboardService().sendAdminMainMenuKeyboard(botContext.getMessageCallback().getSender().getId());
+            botContext.getKeyboardService().sendFirstKeyboard(botContext.getMessageCallback().getSender().getId());
         }
 
         @Override 

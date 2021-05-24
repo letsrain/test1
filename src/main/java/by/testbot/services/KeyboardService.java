@@ -10,6 +10,10 @@ import by.testbot.payload.requests.message.SendTextMessageRequest;
 
 @Service
 public class KeyboardService {
+
+    private String botName = "CreditsBot";
+
+
     @Autowired
     private ViberService viberService;
 
@@ -17,7 +21,7 @@ public class KeyboardService {
     //     SendRichMediaMessageRequest sendRichMediaMessageRequest = new SendRichMediaMessageRequest();
     //     Sender sender = new Sender();
 
-    //     sender.setName("AutoCapitalBot");
+    //     sender.setName(botName);
 
     //     sendRichMediaMessageRequest.setRichMediaKeyboard(KeyboardSource.getAdminMainMenuRichMediaKeyboard());
     //     sendRichMediaMessageRequest.setViberId(viberId);
@@ -27,11 +31,42 @@ public class KeyboardService {
     //     viberService.sendRichMediaMessage(sendRichMediaMessageRequest);
     // }
 
+    public void sendFirstKeyboard(String viberId) {
+        SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
+        Sender sender = new Sender();
+
+        sender.setName(botName);
+
+        sendTextMessageRequest.setText("Меню");
+        sendTextMessageRequest.setKeyboard(KeyboardSource.firstKeyboard());
+        sendTextMessageRequest.setUserId(viberId);
+        sendTextMessageRequest.setSender(sender);
+
+        viberService.sendTextMessage(sendTextMessageRequest);
+    }
+
+    public void sendYesNoKeyboard(String viberId) {
+        SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
+        Sender sender = new Sender();
+
+        sender.setName(botName);
+
+        sendTextMessageRequest.setText("Подобрать предложение");
+        sendTextMessageRequest.setKeyboard(KeyboardSource.yesOrNoKeyboard());
+        sendTextMessageRequest.setUserId(viberId);
+        sendTextMessageRequest.setSender(sender);
+
+        viberService.sendTextMessage(sendTextMessageRequest);
+    }
+
+
+
+
     public void sendAdminMainMenuKeyboard(String viberId) {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Главное меню");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getAdminMainMenuKeyboard());
@@ -45,7 +80,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Список менеджеров");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getListOfManagersMenuKeyboard());
@@ -59,7 +94,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Список клиентов");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getListOfClientsMenuKeyboard());
@@ -73,7 +108,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Отчет");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getReportMenuKeyboard());
@@ -87,7 +122,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Интеграции");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getIntegrationsMenuKeyboard());
@@ -101,7 +136,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Настройки");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getSettingsMenuKeyboard());
@@ -115,7 +150,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Настройка периода временного использования бота");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getSetBotUsagePeriodMenuKeyboard());
@@ -129,7 +164,7 @@ public class KeyboardService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Подтвердите отправку отложенного сообщения");
         sendTextMessageRequest.setKeyboard(KeyboardSource.getConfirmPostponeMessageKeyboard());

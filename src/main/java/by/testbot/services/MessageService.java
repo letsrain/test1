@@ -8,6 +8,9 @@ import by.testbot.payload.requests.message.SendTextMessageRequest;
 
 @Service
 public class MessageService {
+
+    private String botName = "CreditsBot";
+    
     @Autowired
     private ViberService viberService;
 
@@ -15,9 +18,9 @@ public class MessageService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
-        sendTextMessageRequest.setText("Привет, это бот AutoCapitalBot. Чтобы начать отправьте любое сообщение.");
+        sendTextMessageRequest.setText("Привет, это бот для подбора займов. Чтобы начать отправьте любое сообщение.");
         sendTextMessageRequest.setSender(sender);
         sendTextMessageRequest.setUserId(viberId);
 
@@ -28,7 +31,7 @@ public class MessageService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Введите текст, который будет отправлен");
         sendTextMessageRequest.setSender(sender);
@@ -41,7 +44,7 @@ public class MessageService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Загрузите фото, которое будет отправлено");
         sendTextMessageRequest.setSender(sender);
@@ -54,7 +57,7 @@ public class MessageService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Выберите день и время когда сообщение будет отправлено");
         sendTextMessageRequest.setSender(sender);
@@ -99,7 +102,7 @@ public class MessageService {
         SendTextMessageRequest sendTextMessageRequest = new SendTextMessageRequest();
         Sender sender = new Sender();
 
-        sender.setName("AutoCapitalBot");
+        sender.setName(botName);
 
         sendTextMessageRequest.setText("Введите токен для добавления интеграции");
         sendTextMessageRequest.setSender(sender);

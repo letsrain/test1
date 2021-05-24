@@ -37,7 +37,7 @@ public class UserService {
 
     @Transactional
     public User getById(Long id) {
-        return userRepository.findAll().stream().filter(u -> u.getId() == id).findAny().orElse(null);
+        return userRepository.findAll().stream().filter(u -> u.getUser_id() == id).findAny().orElse(null);
     }
 
     @Transactional

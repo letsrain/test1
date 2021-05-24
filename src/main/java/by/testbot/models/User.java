@@ -1,14 +1,6 @@
 package by.testbot.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import by.testbot.bot.BotState;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "user")
@@ -25,9 +19,12 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     @JsonIgnore
-    private Long id;
+    private Long user_id;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Offer> offers;
 
     @Column(name = "ViberId", nullable = false)
     @JsonProperty("id")
@@ -73,4 +70,5 @@ public class User {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BotState", nullable = false)
     private BotState botState;
+
 }

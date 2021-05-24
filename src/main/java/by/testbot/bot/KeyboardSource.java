@@ -63,6 +63,55 @@ public class KeyboardSource {
     //     return richMediaKeyboard;
     // }
 
+
+
+    public static Keyboard firstKeyboard() {
+        Keyboard keyboard = new Keyboard();
+        List<Button> buttons = new ArrayList<>();
+
+        Button postponeMessageButton = new Button();
+        postponeMessageButton.setText("Подобрать предложение");
+        postponeMessageButton.setActionBody("Подобрать предложение");
+        postponeMessageButton.setColumns(1);
+        postponeMessageButton.setRows(1);
+        postponeMessageButton.setBackgroundColor("#2db9b9");
+        postponeMessageButton.setTextPaddings(Arrays.asList(12, 12, 12, 12));
+        buttons.add(postponeMessageButton);
+
+
+        keyboard.setButtons(buttons);
+        return keyboard;
+    }
+
+
+    public static Keyboard yesOrNoKeyboard() {
+        Keyboard keyboard = new Keyboard();
+        List<Button> buttons = new ArrayList<>();
+
+        Button postponeMessageButton = new Button();
+        postponeMessageButton.setText("Уже брал");
+        postponeMessageButton.setActionBody("Уже брал");
+        postponeMessageButton.setColumns(2);
+        postponeMessageButton.setRows(1);
+        postponeMessageButton.setBackgroundColor("#2db9b9");
+        postponeMessageButton.setTextPaddings(Arrays.asList(12, 12, 12, 12));
+        buttons.add(postponeMessageButton);
+
+        Button messageButton = new Button();
+        postponeMessageButton.setText("Перейти");
+        postponeMessageButton.setActionBody("Перейти");
+        postponeMessageButton.setColumns(2);
+        postponeMessageButton.setRows(1);
+        postponeMessageButton.setBackgroundColor("#2db9b9");
+        postponeMessageButton.setTextPaddings(Arrays.asList(12, 12, 12, 12));
+        buttons.add(messageButton);
+
+
+        keyboard.setButtons(buttons);
+        return keyboard;
+    }
+
+
     public static Keyboard getAdminMainMenuKeyboard() {
         Keyboard keyboard = new Keyboard();
         List<Button> buttons = new ArrayList<>();
